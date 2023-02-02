@@ -8,10 +8,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 
-class activity_segunda : AppCompatActivity(), View.OnClickListener {
+class activity_segunda : AppCompatActivity() {
 
     private var cambioIcono: Boolean = false
-    private lateinit var ivLogo: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +25,8 @@ class activity_segunda : AppCompatActivity(), View.OnClickListener {
 
 
         var bnAbrirPantalla = findViewById<Button>(R.id.bnPantalla)
-
-
-        ivLogo = findViewById<ImageView>(R.id.ivLogo)
-        /*  ivLogo.setOnClickListener {
+        var ivLogo = findViewById<ImageView>(R.id.ivLogo)
+        ivLogo.setOnClickListener {
             var arregloImagenes = arrayOf<Int>(R.drawable.anahuac, R.drawable.iest)
             if (cambioIcono) {
                 ivLogo.setImageResource(arregloImagenes[0])
@@ -43,33 +40,9 @@ class activity_segunda : AppCompatActivity(), View.OnClickListener {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
             finish()
-        }*/
+        }
 
         var bnCerrar = findViewById<Button>(R.id.bnCerrar)
-        // bnCerrar.setOnClickListener { finish() }
-
-        bnCerrar.setOnClickListener(
-            this
-        )
-    }
-
-    override fun onClick(p0: View?) {
-        when (p0?.id) {
-            R.id.bnCerrar -> finish()
-            R.id.bnPantalla -> {
-                val i = Intent(this, MainActivity::class.java)
-                startActivity(i)
-                finish()
-            }
-        }
-        ivLogo.setOnClickListener {
-            var arregloImagenes = arrayOf<Int>(R.drawable.anahuac, R.drawable.iest)
-            if (cambioIcono) {
-                ivLogo.setImageResource(arregloImagenes[0])
-            } else {
-                ivLogo.setImageResource(arregloImagenes[1])
-            }
-            cambioIcono = !cambioIcono
-        }
+        bnCerrar.setOnClickListener { finish() }
     }
 }
